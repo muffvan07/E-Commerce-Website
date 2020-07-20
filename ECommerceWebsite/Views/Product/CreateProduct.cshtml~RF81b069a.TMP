@@ -1,0 +1,104 @@
+﻿@model ECommerceWebsite.Models.ProductVM
+
+@{
+    ViewData["Title"] = "CreateProduct";
+}
+
+<h1>CreateProduct</h1>
+
+<h4>Products</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+
+
+
+        <div class="form-group">
+
+        </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form asp-action="CreateProduct">
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <select asp-for="Category" class="form-control" required>
+                    <option value="none" selected disabled hidden>Select an Option</option>
+                    <option>Clothes</option>
+                    <option>Grocery</option>
+                    <option>HouseKeeping</option>
+                </select>
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Unit" class="control-label"></label>
+                <select asp-for="Unit" class="form-control" required>
+                    <option value="none" selected disabled hidden>Select an Option</option>
+                    <option>Pcs</option>
+                    <option>Dozen</option>
+                    <option>Packs</option>
+                    <option>Kgs</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="UnitPrice" class="control-label"></label>
+                <input asp-for="UnitPrice" class="form-control" />
+                <span asp-validation-for="UnitPrice" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="Discount" class="control-label"></label>
+                <input asp-for="Discount" class="form-control" />
+                <small id="" class="form-text text-muted">
+                    in Percentage
+                </small>
+                <span asp-validation-for="Discount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Photo" class="control-label"></label>
+                <div class="custom-file">
+                    <input asp-for="Photo" class="custom-file-input form-control" id="customFile" />
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+                <span asp-validation-for="Photo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label><br />
+                <div class="form-check form-check-inline">
+                    <input asp-for="Status" class="form-check-input" type="checkbox" />
+                    <label class="form-check-label">In Stock</label>
+                </div>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+        </div>
+        <input type="submit" value="Create" class="btn btn-primary" /> |
+        <a asp-action="ListProduct">Back to List</a>
+    </div>
+</form>
+
+@section scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

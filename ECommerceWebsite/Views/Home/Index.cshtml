@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome To E-Commerce Website</h1>
+</div>
+
+<br />
+<br />
+
+@if (SignInManager.IsSignedIn(User))
+{
+
+}
+else
+{
+    <div class="card border-secondary text-center col-md-8" style="margin:auto">
+        <div class="card-header">Register As</div>
+        <div class="card-body text-secondary">
+            <a class="btn btn-primary col-md-3" asp-area="Identity" asp-page="/Account/Register">Admin</a>
+            <a class="btn btn-primary col-md-3" asp-area="Identity" asp-page="/Account/RegisterRetailer">Retailer</a>
+            <a class="btn btn-primary col-md-3" asp-area="Identity" asp-page="/Account/RegisterCustomer">Customer</a>
+        </div>
+    </div>
+}
+
+

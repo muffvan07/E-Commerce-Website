@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+@{
+    ViewData["Title"] = "UserList";
+}
+
+<h1>UserList</h1>
+<hr />
+
+<table class="table table-sm table-bordered">
+    <tr class="text-center">
+        <th>ID</th>
+        <th>Phone Number</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th></th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr class="text-center">
+            <td>@user.Id</td>
+            <td>@user.PhoneNumber</td>
+            <td>@user.UserName</td>
+            <td>@user.Email</td>
+            @if (user.UserName == "admin")
+            {
+                <td>
+                </td>
+            }
+            else
+            {
+                @if (user.LockoutEnabled)
+                {
+                    <td>
+                        @Html.ActionLink("Activate", "Activate", new { id = user.Id })
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.ActionLink("Disable", "Deactivate", new { id = user.Id })
+                    </td>
+                }
+            }
+
+
+        </tr>
+    }
+</table>
+
